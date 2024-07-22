@@ -67,3 +67,6 @@ PFCバランスの基づいたまとめがいのお買い物リストを作成�
 ## ◼️ 参考文献<br>
 - 図解 PFCバランス超入門
   本アプリでの栄養素の計算は参考文献より抜粋
+
+## ◼️ 画面遷移図<br>
+https://www.figma.com/design/93CNiPE1v9xvZBesyC28xL/PF_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=VMfl1bybrOVr7yqA-1
