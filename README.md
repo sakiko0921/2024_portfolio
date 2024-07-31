@@ -59,6 +59,7 @@ PFCバランスの基づいたまとめがいのお買い物リストを作成�
 ### MVPリリース
 - Amazon Personalize → 食材候補を挙げる
 - STEP入力 → お買い物リスト作成時
+
 ### 本リリース
 - OpenAIのAPI → レシピ提案のため
 - Line　API → 共有機能
