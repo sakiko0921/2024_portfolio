@@ -59,6 +59,7 @@ PFCバランスの基づいたまとめがいのお買い物リストを作成�
 ### MVPリリース
 - Amazon Personalize → 食材候補を挙げる
 - STEP入力 → お買い物リスト作成時
+
 ### 本リリース
 - OpenAIのAPI → レシピ提案のため
 - Line　API → 共有機能
@@ -69,7 +70,7 @@ PFCバランスの基づいたまとめがいのお買い物リストを作成�
   本アプリでの栄養素の計算は参考文献より抜粋
 
 ## ◼️ 画面遷移図<br>
-URL: (https://www.figma.com/design/93CNiPE1v9xvZBesyC28xL/PF_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=VMfl1bybrOVr7yqA-1)
+URL: ( https://www.figma.com/design/93CNiPE1v9xvZBesyC28xL/PF_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=VMfl1bybrOVr7yqA-1 )
 
 ## ◼️ ER図<br>
-URL: (https://drive.google.com/file/d/1gspvicnH4QdRDMW23JZ_pCp5YcUZd0Bf/view?usp=sharing)
+URL: ( https://drive.google.com/file/d/1gspvicnH4QdRDMW23JZ_pCp5YcUZd0Bf/view?usp=sharing )
