@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # 以下テスト用
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,8 +13,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # 以下アプリ用
+  # ユーザー登録
   resources :users, only: %i[new]
+  # ログイン・ログアウト
   get "login" => "user_sessions#new", as: :login
 
+  # お買い物リスト作成用
   resources :shopping_lists, only: %i[index show]
+  # リスト作成用のメンバー登録
+  resources :member_infos, only: %i[new]
 end
