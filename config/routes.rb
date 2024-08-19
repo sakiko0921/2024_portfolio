@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[new]
   get "login" => "user_sessions#new", as: :login
 
-  resources :shopping_lists, only: %i[index]
+  resources :shopping_lists, only: %i[index show]
 end
