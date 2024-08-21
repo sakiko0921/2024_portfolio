@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "login" => "user_sessions#new", as: :login
 
   # お買い物リスト作成用
-  resources :shopping_lists, only: %i[index show]
+  resources :shopping_lists, only: %i[index show new]
   # リスト作成用のメンバー登録
   resources :member_infos, only: %i[new]
 end
