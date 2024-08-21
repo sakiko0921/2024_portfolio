@@ -20,10 +20,8 @@ Rails.application.routes.draw do
   # ログイン・ログアウト
   get "login" => "user_sessions#new", as: :login
 
-  # お買い物リスト作成用
   resources :shopping_lists, only: %i[index show new]
-  # リスト作成用のメンバー登録
   resources :member_infos, only: %i[new]
-
   resources :daily_necessity_items, only: %i[new]
+  resources :foods, only: %i[new]
 end
