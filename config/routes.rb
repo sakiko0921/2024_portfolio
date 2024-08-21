@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   resources :shopping_lists, only: %i[index show new]
   # リスト作成用のメンバー登録
   resources :member_infos, only: %i[new]
+
+  resources :daily_necessity_items, only: %i[new]
 end
