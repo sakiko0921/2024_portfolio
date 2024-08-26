@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   # ログイン・ログアウト
   get "login" => "user_sessions#new", as: :login
+  post "login" => "user_sessions#create"
+  delete "logout" => "user_sessions#destroy", as: :logout
 
   resources :shopping_lists, only: %i[index show new]
   resources :member_infos, only: %i[new]
