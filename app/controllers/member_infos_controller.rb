@@ -1,3 +1,44 @@
 class MemberInfosController < ApplicationController
-  def new; end
+  def new
+    logger.debug current_user.inspect
+    @member_info = MemberInfo.new
+    @member_infos = current_user.member_infos.includes(:user).order(created_at: :desc)
+
+      # @shopping_listがnilでないか確認
+  if @shopping_list.nil?
+    # エラーメッセージやデフォルト値の処理をここに追加
+    logger.error 'Shopping list is nil'
+    return
+  end
+
+    # PFC量の計算結果を取得
+    @nutrient_amount = MemberInfo.nutrient_calculator(@member_info, @shopping_list, current_user)
+
+    if @nutrient_amount.nil?
+      logger.error 'Nutrient amount is nil'
+      @nutrient_amount = [0, 0, 0]  # デフォルト値を設定するなどの処理
+    end
+  end
+
+  def create
+    @member_info = current_user.member_info.build(member_info_params)
+    if @member_info.save
+      redirect_to new_member_info_path, success: "会員登録が完了しました"
+    else
+      flash.now[:danger] = "会員登録に失敗しました"
+      render :new
+    end
+  end
+
+  def destroy
+    @member_info = current_user.member_info.find(params[:id])
+    @member_info.destroy!
+    redirect_to new_shopping_list_path, success: "会員情報を削除しました", status: :see_other
+  end
+
+  private
+
+  def member_info_params
+    params.require(:member_info).permit(:name, :gender, :age, :weight, :height)
+  end
 end
