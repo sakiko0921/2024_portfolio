@@ -8,5 +8,4 @@ class Food < ApplicationRecor
 
   # お気に入り機能の追加
   enum favorite: { not_favorite: 0, favorite: 1 }
-
 end
