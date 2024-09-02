@@ -7,11 +7,11 @@ class MemberInfo < ApplicationRecord
   validates :weight, presence: true
   validates :height, presence: true
 
-  enum gender: { man: 0, woman: 1}
+  enum gender: { man: 0, woman: 1 }
 
   # PFC量の計算
   def self.nutrient_calculator(member_info, current_user, shopping_list)
-    return [0, 0, 0] if member_info.empty? || shopping_list.nil?
+    return [ 0, 0, 0 ] if member_info.empty? || shopping_list.nil?
     # member_infoとshoppint_listから情報を取得
     number_of_member = current_user.member_info.count
 

@@ -4,10 +4,10 @@ class MemberInfosController < ApplicationController
     @member_info = MemberInfo.new
     @member_infos = current_user.member_infos.includes(:user).order(created_at: :desc)
 
-      # @shopping_listがnilでないか確認
+  # @shopping_listがnilでないか確認
   if @shopping_list.nil?
     # エラーメッセージやデフォルト値の処理をここに追加
-    logger.error 'Shopping list is nil'
+    logger.error "Shopping list is nil"
     return
   end
 
@@ -15,8 +15,8 @@ class MemberInfosController < ApplicationController
     @nutrient_amount = MemberInfo.nutrient_calculator(@member_info, @shopping_list, current_user)
 
     if @nutrient_amount.nil?
-      logger.error 'Nutrient amount is nil'
-      @nutrient_amount = [0, 0, 0]  # デフォルト値を設定するなどの処理
+      logger.error "Nutrient amount is nil"
+      @nutrient_amount = [ 0, 0, 0 ]  # デフォルト値を設定するなどの処理
     end
   end
 
