@@ -1,16 +1,22 @@
 <div class="stats stats-vertical lg:stats-horizontal shadow">
   <div class="stat">
     <div class="stat-title">タンパク質</div>
-    <div class="stat-value">11.1g</div>
+    <div class="stat-value">
+      <%= @nutrient_amount[0] %>
+    </div>
   </div>
 
   <div class="stat">
     <div class="stat-title">脂質</div>
-    <div class="stat-value">0.5g</div>
+    <div class="stat-value">
+      <%= @nutrient_amount[1] %>
+    </div>
   </div>
 
   <div class="stat">
     <div class="stat-title">炭水化物</div>
-    <div class="stat-value">12.0g</div>
+    <div class="stat-value">
+      <%= @nutrient_amount[2] %>
+    </div>
   </div>
 </div>

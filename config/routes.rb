@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   post "login" => "user_sessions#create"
   delete "logout" => "user_sessions#destroy", as: :logout
 
-  resources :shopping_lists, only: %i[index show new]
-  resources :member_infos, only: %i[new]
+  resources :shopping_lists, only: %i[index show new create]
+  resources :member_infos, only: %i[new create destroy]
   resources :daily_necessity_items, only: %i[new]
   resources :foods, only: %i[new]
 end
