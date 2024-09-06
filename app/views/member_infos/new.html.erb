@@ -2,11 +2,12 @@
   <h1 class="text-3xl font-bold text-left ml-20 my-10">基本情報入力</h1>
   <!-- PFCの量を表示するためのコード -->
   <div class="mr-10 mt-5">
-  <%# <%= render "shared/nutrient_amount" %> %>
+  <%# <%= render "shared/nutrient_amount" %>
   </div>
 </div>
+
+
 <!-- ここから入力フォーム -->
-<div class="ml-10 my-10">
   <%= form_with model: @member_info, local: true do |f| %>
     <div class="flex gap-5 mt-5 items-end">
       <%= f.label :name, "名前", class: "form-control w-full max-w-xs" do %>
@@ -19,7 +20,7 @@
         <div class="label">
           <span class="label-text">性別</span>
         </div>
-        <%= f.select :gender, options_for_select([["選択してください", ""], "男性", "女性"]), {}, class: "select select-bordered" %>
+        <%= f.select :gender, options_for_select([["選択してください", ""], *MemberInfo.genders.map { |k, v| [I18n.t("enums.member_info.gender.#{k}"), v] }]), {}, class: "select select-bordered" %>
       <% end %>
       <%= f.label :age, "年齢", class: "form-control w-full max-w-xs" do %>
         <div class="label">
@@ -76,3 +77,4 @@
     </tbody>
   </table>
 </div>
+<%= link_to "次へ", new_shopping_list_path, class: "btn btn-primary btn-wide my-5" %>

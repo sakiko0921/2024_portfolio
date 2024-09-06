@@ -1,3 +1,6 @@
 class FoodsController < ApplicationController
-  def new; end
+  def new
+    @food = Food.new
+    @foods = Food.all
+  end
 end

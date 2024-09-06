@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_02_133011) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_02_154656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "food_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "food_id", null: false
+    t.bigint "shopping_list_id", null: false
+    t.decimal "quantity", precision: 5, scale: 2
+    t.integer "status", default: 0, null: false
+    t.index ["food_id"], name: "index_food_items_on_food_id"
+    t.index ["shopping_list_id"], name: "index_food_items_on_shopping_list_id"
+  end
 
   create_table "foods", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,11 +38,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_133011) do
   create_table "member_infos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "weight", null: false
-    t.integer "height", null: false
     t.string "name", null: false
     t.string "age", null: false
     t.bigint "user_id", null: false
+    t.integer "weight", null: false
+    t.integer "height", null: false
     t.integer "gender", default: 0
     t.index ["user_id"], name: "index_member_infos_on_user_id"
   end
@@ -60,6 +71,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_133011) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "food_items", "foods"
+  add_foreign_key "food_items", "shopping_lists"
   add_foreign_key "member_infos", "users"
   add_foreign_key "shopping_lists", "users"
 end

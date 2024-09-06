@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :member_infos, only: %i[new create destroy]
   resources :daily_necessity_items, only: %i[new]
   resources :foods, only: %i[new]
+  resources :food_items, only: %i[new create]
 end
