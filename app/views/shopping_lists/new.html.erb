@@ -2,154 +2,22 @@
   <h1 class="text-3xl font-bold text-left ml-20 my-10">お買い物リスト作成</h1>
   <!-- PFCの量を表示するためのコード -->
   <div class="mr-10 mt-5">
-    <%# <%= render "shared/nutrient_amount" %> %>
+    <%# <%= render "shared/nutrient_amount" %>
   </div>
 </div>
 
 <!-- 買いだめ日数の入力フォーム -->
-<%= form_with model: @shopping_list do |m| %>
-  <div>
+<div class="ml-10 my-10">
+  <%= form_with model: @shopping_list do |m| %>
+    <div class="flex gap-5 mt-5 items-end">
     <%= m.label :stocking_days, "買いだめ日数", class: "form-control w-full max-w-xs" do %>
       <div class="label">
         <span class="label-text">買いだめ日数</span>
       </div>
       <%= m.select :stocking_days, options_for_select([["選択してください", ""], "1日", "2日", "3日", "4日", "5日", "6日", "7日"]), {}, class: "select select-bordered" %>
     <% end %>
-  </div>
-<% end %>
-
-<!-- タンパク質食材のおすすめチェックリスト -->
-<h1 class="text-2xl text-left ml-20 my-10">タンパク質</h1>
-<div class="form-control grid grid-cols-5 gap-8 mx-12">
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
+    <%= m.submit "登録", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
-<!-- 脂質食材のおすすめチェックリスト -->
-<h1 class="text-2xl text-left ml-20 my-10">脂質</h1>
-<div class="form-control grid grid-cols-5 gap-8 mx-12">
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-</div>
-<!-- 炭水化物のおすすめチェックリスト -->
-<h1 class="text-2xl text-left ml-20 my-10">炭水化物</h1>
-<div class="form-control grid grid-cols-5 gap-8 mx-12">
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">豚肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">牛肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">鶏肉</span>
-  </label>
-</div>
-<div class="flex justify-center">
-  <button class="btn btn-primary btn-wide my-5 ">次へ</button>
-</div>
+<%= link_to "次へ", new_food_item_path, class: "btn btn-primary btn-wide my-5" %>
