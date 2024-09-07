@@ -81,3 +81,6 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
+# Foodデータベースのシードデータ作成
+CMD ["sh", "-c", "rails db:migrate && rails db:seed"]
