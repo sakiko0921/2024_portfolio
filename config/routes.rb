@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :shopping_lists, only: %i[index show new create]
   resources :member_infos, only: %i[new create destroy]
-  resources :daily_necessity_items, only: %i[new]
+  resources :daily_necessity_items, only: %i[new create]
   resources :foods, only: %i[new]
   resources :food_items, only: %i[new create]
 end
