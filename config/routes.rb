@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   # 以下アプリ用
   # ユーザー登録
+  root "welcome_pages#index"
+
   resources :users, only: %i[new create]
   # ログイン・ログアウト
   get "login" => "user_sessions#new", as: :login
