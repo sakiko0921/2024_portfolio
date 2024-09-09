@@ -2,6 +2,8 @@ class DailyNecessityItemsController < ApplicationController
   def new
     @daily_necessity_item = DailyNecessityItem.new
     @shopping_list = current_user.shopping_lists.find(params[:shopping_list_id])
+    @daily_necessity = DailyNecessity.new
+    @daily_necessities = current_user.daily_necessities
   end
 
   def create
@@ -18,6 +20,12 @@ class DailyNecessityItemsController < ApplicationController
         render :new and return
       end
     end
-    redirect_to shopping_list_path(@shopping_list), success: "日用品を追加しました"
+    redirect_to edit_shopping_list_path(@shopping_list), success: "日用品を追加しました"
+  end
+
+  private
+
+  def daily_necessity_item_params
+    params.require(:daily_necessity_item).permit(:name, :quantity)
   end
 end

@@ -11,4 +11,5 @@ class User < ApplicationRecord
   # ユーザー情報の関連付け(お買い物リスト、ユーザーのメンバー登録情報)
   has_many :shopping_lists, dependent: :destroy
   has_many :member_infos, dependent: :destroy
+  has_many :daily_necessities, dependent: :destroy
 end

@@ -1,50 +1,28 @@
 <div class="flex justify-between">
   <h1 class="text-3xl font-bold text-left ml-20 my-10">その他(日用品・雑貨等)</h1>
-  <!-- PFCの量を表示するためのコード -->
-  <div class="mr-10 mt-5">
-    <%# <%= render "shared/nutrient_amount" %> %>
-  </div>
 </div>
-<!-- ここから入力フォーム -->
+<!-- ここから品名の入力フォーム -->
 <div class="mx-10 my-10">
-  <label class="form-control w-full max-w-xs">
-    <div class="label">
-      <span class="label-text text-2xl">品名</span>
-    </div>
-    <input type="text" placeholder="入力してください" class="input input-bordered w-full max-w-xs" />
-  </label>
+  <%= form_with model: [@daily_necessity], url: daily_necessities_path, method: :post, local: true do |f| %>
+    <label class="form-control w-full max-w-xs">
+      <div class="label">
+        <span class="label-text text-2xl">品名</span>
+      </div>
+      <%= f.text_field :name, class: "input input-bordered w-full max-w-xs",placeholder: "入力してください" %>
+    </label>
+    <%= f.submit "追加", class: "btn btn-primary btn-wide my-5" %>
+  <% end %>
 </div>
 <!-- その他必要なもののチェックリスト -->
-<div class="form-control grid grid-cols-5 gap-8 mx-12">
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">トイレットペーパー</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">キッチンペーパー</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">醤油</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">白だし</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">ティッシュ</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">おたま</span>
-  </label>
-  <label class="label cursor-pointer">
-    <input type="checkbox" checked="checked" class="checkbox" />
-    <span class="label-text">洗剤</span>
-  </label>
-</div>
-<div class="flex justify-center">
-  <button class="btn btn-primary btn-wide my-5 ">次へ</button>
-</div>
+<%= form_with model: @daily_necessity_item, local: true do |f| %>
+  <%= f.hidden_field :shopping_list_id, value: @shopping_list.id %>
+  <div class="form-control grid grid-cols-5 gap-8 mx-12">
+    <% @daily_necessities.each do |daily_necessity| %>
+      <label class="label cursor-pointer">
+        <%= check_box_tag 'daily_necessity_item_ids[]', daily_necessity.id, false, class: "checkbox" %>
+        <span class="label-text"><%= daily_necessity.name %></span>
+      </label>
+    <% end %>
+  </div>
+  <%= f.submit "登録", class: "btn btn-primary btn-wide my-5" %>
+<% end %>
