@@ -46,6 +46,8 @@ class FoodItemsController < ApplicationController
   private
 
   def food_item_params
-    params.require(:'[food_items]').permit!
+    params.require(:'[food_items]').transform_values do |food_item|
+      food_item.permit(:quantity, :unit)
+    end
   end
 end
