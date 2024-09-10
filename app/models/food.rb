@@ -1,5 +1,6 @@
 class Food < ApplicationRecord
   has_many :food_items
+  has_many :shopping_lists, through: :food_items
 
   validates :name, presence: true
   validates :protein, presence: true, numericality: { less_than: 1000 } # 999.9以下に制限

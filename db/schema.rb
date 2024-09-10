@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_09_085608) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_09_142703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_09_085608) do
     t.bigint "daily_necessity_id", null: false
     t.bigint "shopping_list_id", null: false
     t.integer "quantity"
+    t.integer "unit", default: 0
     t.index ["daily_necessity_id"], name: "index_daily_necessity_items_on_daily_necessity_id"
     t.index ["shopping_list_id"], name: "index_daily_necessity_items_on_shopping_list_id"
   end
@@ -38,6 +39,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_09_085608) do
     t.bigint "food_id", null: false
     t.bigint "shopping_list_id", null: false
     t.decimal "quantity", precision: 5, scale: 2
+    t.integer "unit", default: 0
     t.index ["food_id"], name: "index_food_items_on_food_id"
     t.index ["shopping_list_id"], name: "index_food_items_on_shopping_list_id"
   end
