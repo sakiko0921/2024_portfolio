@@ -18,6 +18,14 @@ class ShoppingListsController < ApplicationController
     end
   end
 
+  def edit
+    p @shopping_list = current_user.shopping_lists.find(params[:id])
+    @foods = @shopping_list.foods
+    @food_items = @shopping_list.food_items
+    p @daily_necessities = @shopping_list.daily_necessities
+    p @daily_necessity_items = @shopping_list.daily_necessity_items
+  end
+
   private
 
   def shopping_list_params
