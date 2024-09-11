@@ -1,5 +1,7 @@
 class ShoppingListsController < ApplicationController
-  def index; end
+  def index
+    @shopping_lists = current_user.shopping_lists.order(created_at: :desc).limit(6)
+  end
 
   def show; end
 

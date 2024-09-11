@@ -1,71 +1,22 @@
 <h1 class="text-3xl font-bold text-left ml-20 my-10">お買い物リスト一覧</h1>
 
-  <!-- CARD for shopping list 1 -->
-  <div class="mx-10">
-    <div class="grid grid-cols-4 gap-y-4">
+<% if @shopping_lists.present? %>
+<!-- CARD for shopping list 1 -->
+<div class="mx-10">
+  <div class="grid grid-cols-3 gap-y-4">
+    <% @shopping_lists.each do |shopping_list| %>
       <div class="card bg-base-200 w-96 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">日付</h2>
-          <p>リスト上位3つ</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">確認</button>
+        <%= link_to edit_shopping_list_path(shopping_list) do %>
+          <div class="card-body">
+            <h2 class="card-title"><%= shopping_list.created_at %></h2>
+            <h3>買いだめ日数：<%= shopping_list.stocking_days %>日</h3>
           </div>
-        </div>
+        <% end %>
       </div>
-      <!-- CARD for shopping list 2 -->
-      <div class="card bg-base-200 w-96 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">日付</h2>
-          <p>リスト上位3つ</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">確認</button>
-          </div>
-        </div>
-      </div>
-      <!-- CARD for shopping list 3 -->
-      <div class="card bg-base-200 w-96 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">日付</h2>
-          <p>リスト上位3つ</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">確認</button>
-          </div>
-        </div>
-      </div>
-      <!-- CARD for shopping list 4 -->
-      <div class="card bg-base-200 w-96 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">日付</h2>
-          <p>リスト上位3つ</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">確認</button>
-          </div>
-        </div>
-      </div>
-      <!-- CARD for shopping list 5 -->
-      <div class="card bg-base-200 w-96 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">日付</h2>
-          <p>リスト上位3つ</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">確認</button>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
-<!-- pagination -->
-<div class="flex justify-center my-10">
-  <div class="join">
-    <input
-      class="join-item btn btn-square"
-      type="radio"
-      name="options"
-      aria-label="1"
-      checked="checked" />
-    <input class="join-item btn btn-square" type="radio" name="options" aria-label="2" />
-    <input class="join-item btn btn-square" type="radio" name="options" aria-label="3" />
-    <input class="join-item btn btn-square" type="radio" name="options" aria-label="4" />
-  </div>
-</div>
+<% else %>
+  <p>お買い物リストはありません</p>
+<% end %>
