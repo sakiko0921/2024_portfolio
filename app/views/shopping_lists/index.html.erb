@@ -6,7 +6,7 @@
   <div class="grid grid-cols-3 gap-y-4">
     <% @shopping_lists.each do |shopping_list| %>
       <div class="card bg-base-200 w-96 shadow-xl">
-        <%= link_to edit_shopping_list_path(shopping_list) do %>
+        <%= link_to shopping_list_path(shopping_list) do %>
           <div class="card-body">
             <h2 class="card-title"><%= shopping_list.created_at %></h2>
             <h3>買いだめ日数：<%= shopping_list.stocking_days %>日</h3>

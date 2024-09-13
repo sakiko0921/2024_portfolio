@@ -3,7 +3,13 @@ class ShoppingListsController < ApplicationController
     @shopping_lists = current_user.shopping_lists.order(created_at: :desc).limit(6)
   end
 
-  def show; end
+  def show
+    @shopping_list = current_user.shopping_lists.find(params[:id])
+    @foods = @shopping_list.foods
+    @food_items = @shopping_list.food_items
+    @daily_necessities = @shopping_list.daily_necessities
+    @daily_necessity_items = @shopping_list.daily_necessity_items
+  end
 
   def new
     @shopping_list = current_user.shopping_lists.new
@@ -21,11 +27,11 @@ class ShoppingListsController < ApplicationController
   end
 
   def edit
-    p @shopping_list = current_user.shopping_lists.find(params[:id])
+    @shopping_list = current_user.shopping_lists.find(params[:id])
     @foods = @shopping_list.foods
     @food_items = @shopping_list.food_items
-    p @daily_necessities = @shopping_list.daily_necessities
-    p @daily_necessity_items = @shopping_list.daily_necessity_items
+    @daily_necessities = @shopping_list.daily_necessities
+    @daily_necessity_items = @shopping_list.daily_necessity_items
   end
 
   private

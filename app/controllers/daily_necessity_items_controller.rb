@@ -29,7 +29,7 @@ class DailyNecessityItemsController < ApplicationController
       daily_necessity_item = DailyNecessityItem.find(id)
       unless daily_necessity_item.update(daily_necessity_item_param)
         flash[:danger] = "日用品の更新に失敗しました"
-        redirect_to edit_shopping_list_path(daily_necessity_item.shopping_list_id) and return
+        redirect_to edit_shopping_list_path(daily_necessity_item.shopping_list_id)
       end
     end
     redirect_to edit_shopping_list_path(daily_necessity_item.shopping_list_id), success: "日用品を更新しました"
