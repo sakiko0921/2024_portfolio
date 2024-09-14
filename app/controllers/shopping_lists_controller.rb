@@ -39,8 +39,4 @@ class ShoppingListsController < ApplicationController
   def shopping_list_params
     params.require(:shopping_list).permit(:stocking_days)
   end
-
-  def food_item_params
-    params.require(:food_items).permit!
-  end
 end
