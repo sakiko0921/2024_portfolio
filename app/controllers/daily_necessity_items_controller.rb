@@ -23,16 +23,14 @@ class DailyNecessityItemsController < ApplicationController
     redirect_to edit_shopping_list_path(@shopping_list), success: "日用品を追加しました"
   end
 
-  def update_multiple
-    daily_necessity_item = nil
-    daily_necessity_item_params.each do |id, daily_necessity_item_param|
-      daily_necessity_item = DailyNecessityItem.find(id)
-      unless daily_necessity_item.update(daily_necessity_item_param)
-        flash[:danger] = "日用品の更新に失敗しました"
-        redirect_to edit_shopping_list_path(daily_necessity_item.shopping_list_id)
-      end
+  def update
+    @daily_necessity_item = DailyNecessityItem.find(params[:id])
+    if @daily_necessity_item.update(daily_necessity_item_params)
+      redirect_to edit_shopping_list_path(@daily_necessity_item.shopping_list_id), success: "日用品を更新しました"
+    else
+      flash.now[:danger] = "日用品の更新に失敗しました"
+      render :edit
     end
-    redirect_to edit_shopping_list_path(daily_necessity_item.shopping_list_id), success: "日用品を更新しました"
   end
 
   def destroy
@@ -44,6 +42,6 @@ class DailyNecessityItemsController < ApplicationController
   private
 
   def daily_necessity_item_params
-    params.require(:daily_necessity_item).permit(:name, :quantity, :unit)
+    params.require(:daily_necessity_item).permit(:quantity, :unit)
   end
 end

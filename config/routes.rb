@@ -26,16 +26,8 @@ Rails.application.routes.draw do
 
   resources :shopping_lists, only: %i[index show new create edit update]
   resources :member_infos, only: %i[new create destroy]
-  resources :daily_necessity_items do
-    collection do
-      patch :update_multiple
-    end
-  end
+  resources :daily_necessity_items, only: %i[new create update destroy]
   resources :daily_necessities, only: %i[create]
   resources :foods, only: %i[new]
-  resources :food_items do
-    collection do
-      patch :update_multiple
-    end
-  end
+  resources :food_items, only: %i[new create update destroy]
 end
