@@ -28,10 +28,10 @@ class ShoppingListsController < ApplicationController
 
   def edit
     @shopping_list = current_user.shopping_lists.find(params[:id])
-    @foods = @shopping_list.foods
     @food_items = @shopping_list.food_items
-    @daily_necessities = @shopping_list.daily_necessities
+    @foods = @shopping_list.foods
     @daily_necessity_items = @shopping_list.daily_necessity_items
+    @daily_necessities = @shopping_list.daily_necessities
   end
 
   private

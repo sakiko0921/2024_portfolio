@@ -25,16 +25,14 @@ class FoodItemsController < ApplicationController
     redirect_to new_daily_necessity_item_path(shopping_list_id: @shopping_list.id), success: "食材を追加しました"
   end
 
-  def update_multiple
-    food_item = nil
-    food_item_params.each do |id, food_item_param|
-      food_item = FoodItem.find(id)
-      unless food_item.update(food_item_param)
-        flash[:danger] = "食材の更新に失敗しました"
-        redirect_to edit_shopping_list_path(food_item.shopping_list_id) and return
-      end
+  def update
+    @food_item = FoodItem.find(params[:id])
+    if @food_item.update(food_item_params)
+      redirect_to edit_shopping_list_path(@food_item.shopping_list_id), success: "食材を更新しました"
+    else
+      flash.now[:danger] = "食材の更新に失敗しました"
+      render :edit
     end
-    redirect_to edit_shopping_list_path(food_item.shopping_list_id), success: "食材を更新しました"
   end
 
   def destroy
@@ -46,8 +44,6 @@ class FoodItemsController < ApplicationController
   private
 
   def food_item_params
-    params.require(:'[food_items]').transform_values do |food_item|
-      food_item.permit(:quantity, :unit)
-    end
+    params.require(:food_item).permit(:quantity, :unit)
   end
 end

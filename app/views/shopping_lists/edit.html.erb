@@ -13,24 +13,23 @@
     </thead>
     <tbody>
       <!-- row 1 -->
-      <%= form_with(url: update_multiple_food_items_path, method: :patch, local: true) do |form| %>
-        <% @food_items.each do |food_item| %>
-          <%= form.fields_for 'food_items[]', food_item do |food_item_form| %>
-            <tr>
-              <td>
-                <div class="flex items-center gap-3">
-                  <div class="font-bold"><%= food_item.food.name %></div>
-                </div>
-              </td>
-              <td><%= food_item_form.text_field :quantity, value: food_item.quantity %></td>
-              <td><%= food_item_form.select :unit, FoodItem.units.keys.map { |unit| [unit, unit] }, selected: food_item.unit %></td>
-              <th>
-                <%= link_to "削除", food_item_path(food_item), id: "button-delete-#{food_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
-              </th>
-            </tr>
-          <% end %>
+      <% @food_items.each do |food_item| %>
+        <%= form_with model: food_item do |form| %>
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div class="font-bold"><%= food_item.food.name %></div>
+              </div>
+            </td>
+            <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: food_item.quantity %></td>
+            <td><%= form.select :unit, FoodItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
+            <th>
+              <%= link_to '削除', food_item_path(food_item), id: "button-delete-#{food_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
+              <%= form.submit "登録", class: "btn btn-primary" %>
+            </th>
+          </tr>
+        <tr>
         <% end %>
-        <%= form.submit "食品登録", class: "btn btn-primary" %>
       <% end %>
     </tbody>
   </table>
@@ -48,24 +47,23 @@
     </thead>
     <tbody>
       <!-- row 1 -->
-      <%= form_with(url: update_multiple_daily_necessity_items_path, method: :patch, local: true) do |form| %>
-        <% @daily_necessity_items.each do |daily_necessity_item| %>
-          <%= form.fields_for 'daily_necessity_items[]', daily_necessity_item do |daily_necessity_item_form| %>
-            <tr>
-              <td>
-                <div class="flex items-center gap-3">
-                  <div class="font-bold"><%= daily_necessity_item.daily_necessity.name %></div>
-                </div>
-              </td>
-              <td><%= daily_necessity_item_form.text_field :quantity, value: daily_necessity_item.quantity %></td>
-              <td><%= daily_necessity_item_form.select :unit, DailyNecessityItem.units.keys.map { |unit| [unit, unit] }, selected: daily_necessity_item.unit %></td>
-              <th>
-                <%= link_to '削除', daily_necessity_item_path(daily_necessity_item), id: "button-delete-#{daily_necessity_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
-              </th>
-            </tr>
-          <% end %>
+      <% @daily_necessity_items.each do |daily_necessity_item| %>
+        <%= form_with model: daily_necessity_item do |form| %>
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div class="font-bold"><%= daily_necessity_item.daily_necessity.name %></div>
+              </div>
+            </td>
+            <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: daily_necessity_item.quantity %></td>
+            <td><%= form.select :unit, DailyNecessityItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
+            <th>
+              <%= link_to '削除', daily_necessity_item_path(daily_necessity_item), id: "button-delete-#{daily_necessity_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
+              <%= form.submit "登録", class: "btn btn-primary" %>
+            </th>
+          </tr>
+        <tr>
         <% end %>
-        <%= form.submit "日用品登録", class: "btn btn-primary" %>
       <% end %>
     </tbody>
   </table>
