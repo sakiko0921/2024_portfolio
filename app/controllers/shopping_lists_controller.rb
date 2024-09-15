@@ -9,6 +9,9 @@ class ShoppingListsController < ApplicationController
     @food_items = @shopping_list.food_items
     @daily_necessities = @shopping_list.daily_necessities
     @daily_necessity_items = @shopping_list.daily_necessity_items
+
+    calculator = FoodCalculator.new(@food_items)
+    @nutrient_amounts = calculator.calculate
   end
 
   def new
@@ -32,6 +35,9 @@ class ShoppingListsController < ApplicationController
     @foods = @shopping_list.foods
     @daily_necessity_items = @shopping_list.daily_necessity_items
     @daily_necessities = @shopping_list.daily_necessities
+
+    calculator = FoodCalculator.new(@food_items)
+    @nutrient_amounts = calculator.calculate
   end
 
   private

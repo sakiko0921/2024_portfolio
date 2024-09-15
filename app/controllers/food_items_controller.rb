@@ -9,9 +9,6 @@ class FoodItemsController < ApplicationController
   end
 
   def create
-    puts "DEBUG: params = #{params.inspect}"
-    puts params.inspect
-
     @shopping_list = current_user.shopping_lists.find(params[:food_item][:shopping_list_id])
     food_item_ids = params[:food_item_ids]
 

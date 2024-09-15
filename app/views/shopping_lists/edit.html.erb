@@ -1,73 +1,45 @@
-<h1 class="text-3xl font-bold text-left ml-20 my-10"><%= @shopping_list.created_at %>(日付)お買い物リスト</h1>
-  <!-- 食材の数量登録ページ -->
-  <div class="overflow-x-auto mx-5">
-  <table class="table">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th>食品名</th>
-        <th>数量/重量</th>
-        <th>単位</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- row 1 -->
-      <% @food_items.each do |food_item| %>
-        <%= form_with model: food_item do |form| %>
-          <tr>
-            <td>
-              <div class="flex items-center gap-3">
-                <div class="font-bold"><%= food_item.food.name %></div>
-              </div>
-            </td>
-            <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: food_item.quantity %></td>
-            <td><%= form.select :unit, FoodItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
-            <th>
-              <%= link_to '削除', food_item_path(food_item), id: "button-delete-#{food_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
-              <%= form.submit "登録", class: "btn btn-primary" %>
-            </th>
-          </tr>
-        <tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  <!-- 日用品の数量登録テーブル -->
-  <div class="overflow-x-auto mx-5 my-5">
-  <table class="table">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th>品名</th>
-        <th>数量/重量</th>
-        <th>単位</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- row 1 -->
-      <% @daily_necessity_items.each do |daily_necessity_item| %>
-        <%= form_with model: daily_necessity_item do |form| %>
-          <tr>
-            <td>
-              <div class="flex items-center gap-3">
-                <div class="font-bold"><%= daily_necessity_item.daily_necessity.name %></div>
-              </div>
-            </td>
-            <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: daily_necessity_item.quantity %></td>
-            <td><%= form.select :unit, DailyNecessityItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
-            <th>
-              <%= link_to '削除', daily_necessity_item_path(daily_necessity_item), id: "button-delete-#{daily_necessity_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
-              <%= form.submit "登録", class: "btn btn-primary" %>
-            </th>
-          </tr>
-        <tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="flex justify-center">
-    <%= link_to '作成完了', shopping_lists_path, class: "btn btn-secondary btn-wide" %>
-  </div>
+<h1 class="text-3xl font-bold text-left ml-20 my-10">数量登録ページ</h1>
+<div class="flex justify-end mr-10 mt-5">
+  <%= render "shared/nutrient_amount" %>
 </div>
+<!-- 食材の数量登録ページ -->
+<div class="mx-10">
+  <!-- row 1 -->
+  <% @food_items.each do |food_item| %>
+    <%= form_with model: food_item do |form| %>
+      <tr>
+        <td>
+          <div class="flex items-center gap-3">
+            <div class="font-bold"><%= food_item.food.name %></div>
+          </div>
+        </td>
+        <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: food_item.quantity %></td>
+        <td><%= form.select :unit, FoodItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
+        <th>
+          <%= link_to '削除', food_item_path(food_item), id: "button-delete-#{food_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
+          <%= form.submit "登録", class: "btn btn-primary" %>
+        </th>
+      </tr>
+    <% end %>
+  <% end %>
+  <!-- 日用品の数量登録テーブル -->
+  <!-- row 1 -->
+  <% @daily_necessity_items.each do |daily_necessity_item| %>
+    <%= form_with model: daily_necessity_item do |form| %>
+      <tr>
+        <td>
+          <div class="flex items-center gap-3">
+            <div class="font-bold"><%= daily_necessity_item.daily_necessity.name %></div>
+          </div>
+        </td>
+        <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: daily_necessity_item.quantity %></td>
+        <td><%= form.select :unit, DailyNecessityItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
+        <th>
+          <%= link_to '削除', daily_necessity_item_path(daily_necessity_item), id: "button-delete-#{daily_necessity_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
+          <%= form.submit "登録", class: "btn btn-primary" %>
+        </th>
+      </tr>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to '作成完了', shopping_lists_path, class: "btn btn-secondary btn-wide mx-12 my-5" %>
