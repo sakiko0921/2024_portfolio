@@ -21,8 +21,6 @@
   <body>
     <% if logged_in? %>
       <%= render "shared/header_after_login" %>
-    <% else %>
-      <%= render "shared/header_before_login" %>
     <% end %>
     <%= render "shared/flash_messages" %>
     <%= yield %>
