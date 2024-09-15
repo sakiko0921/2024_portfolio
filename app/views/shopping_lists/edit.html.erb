@@ -14,7 +14,7 @@
           </div>
         </td>
         <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: food_item.quantity %></td>
-        <td><%= form.select :unit, FoodItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
+        <td>g</td>
         <th>
           <%= link_to '削除', food_item_path(food_item), id: "button-delete-#{food_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
           <%= form.submit "登録", class: "btn btn-primary" %>
@@ -33,7 +33,7 @@
           </div>
         </td>
         <td><%= form.text_field :quantity, class: "input input-bordered w-full max-w-xs", value: daily_necessity_item.quantity %></td>
-        <td><%= form.select :unit, DailyNecessityItem.units.keys.map { |unit| [unit, unit] }, class: "input input-bordered w-full max-w-xs" %></td>
+        <td>g</td>
         <th>
           <%= link_to '削除', daily_necessity_item_path(daily_necessity_item), id: "button-delete-#{daily_necessity_item.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
           <%= form.submit "登録", class: "btn btn-primary" %>
