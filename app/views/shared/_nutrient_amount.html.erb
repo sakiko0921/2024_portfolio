@@ -1,22 +1,22 @@
-<div class="stats stats-vertical lg:stats-horizontal shadow">
-  <div class="stat">
-    <div class="stat-title">タンパク質</div>
-    <div class="stat-value">
-      <%= @nutrient_amounts[:protein] %>
+<div class="flex flex-col">
+  <h2 class="text-2xl font-bold ml-3 mb-1">残りの必要な栄養素量</h2>
+  <div class="stats stats-vertical lg:stats-horizontal shadow">
+    <div class="stat">
+      <div class="stat-title">タンパク質</div>
+      <div class="stat-value"><%= @nutrient_amounts[:protein] %>g</div>
+      <div class="stat-desc">必要量：<%= @nutrient_amounts[:total_protein] %>g</div>
     </div>
-  </div>
 
-  <div class="stat">
-    <div class="stat-title">脂質</div>
-    <div class="stat-value">
-      <%= @nutrient_amounts[:fat] %>
+    <div class="stat">
+      <div class="stat-title">脂質</div>
+      <div class="stat-value"><%= @nutrient_amounts[:fat] %>g</div>
+      <div class="stat-desc">必要量：<%= @nutrient_amounts[:total_fat] %>g</div>
     </div>
-  </div>
 
-  <div class="stat">
-    <div class="stat-title">炭水化物</div>
-    <div class="stat-value">
-      <%= @nutrient_amounts[:carbohydrate] %>
+    <div class="stat">
+      <div class="stat-title">炭水化物</div>
+      <div class="stat-value"><%= @nutrient_amounts[:carbohydrate] %>g</div>
+      <div class="stat-desc">必要量：<%= @nutrient_amounts[:total_carbohydrate] %>g</div>
     </div>
   </div>
 </div>
