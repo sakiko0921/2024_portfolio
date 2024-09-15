@@ -2,7 +2,6 @@
   <h1 class="text-3xl font-bold text-left ml-20 my-10">基本情報入力</h1>
   <!-- PFCの量を表示するためのコード -->
   <div class="mr-10 mt-5">
-  <%# <%= render "shared/nutrient_amount" %>
   </div>
 </div>
 
@@ -54,6 +53,7 @@
         <th>性別</th>
         <th>年齢</th>
         <th>身長</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -61,7 +61,7 @@
       <% @member_infos.each do |member_info| %>
         <tr>
           <td>
-            <div class="font-bold"><%= member_info.name %></div>
+            <div class="font-bold"><%= member_info.name %></#div>
           </td>
           <td>
             <div class="font-bold"><%= member_info.gender %></div>
@@ -72,6 +72,9 @@
           <td>
             <div class="font-bold"><%= member_info.height %></div>
           </td>
+          <th>
+            <%= link_to '削除', member_info_path(member_info), id: "button-delete-#{member_info.id}", data: { turbo_method: :delete }, class: "btn btn-danger" %>
+          </th>
         </tr>
       <% end %>
     </tbody>

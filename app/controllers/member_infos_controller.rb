@@ -24,16 +24,16 @@ class MemberInfosController < ApplicationController
   end
 
   def destroy
-    @member_info = current_user.member_info.find(params[:id])
+    @member_info = current_user.member_infos.find(params[:id])
     @member_info.destroy!
-    redirect_to new_shopping_list_path, success: "会員情報を削除しました", status: :see_other
+    redirect_to new_member_info_path, success: "会員情報を削除しました", status: :see_other
   end
 
   private
 
   def member_info_params
-    params.require(:member_info).permit(:name, :age, :height, :weight).tap do |whitelisted|
-      whitelisted[:gender] = params[:member_info][:gender].to_i if params[:member_info][:gender].present?
+    params.require(:member_info).permit(:name, :age, :height, :weight, :gender).tap do |whitelisted|
+      whitelisted[:gender] = whitelisted[:gender].to_i
     end
   end
 end
