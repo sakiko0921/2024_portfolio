@@ -32,10 +32,13 @@
       </label>
       <%= f.submit "ログイン", class: "btn btn-primary btn-s btn-wide" %>
     <% end %>
-    <div class='link link-primary'>
-      <%= link_to  '新規登録', new_user_path %>
-      <%= link_to  'パスワードを忘れた方', '#' %>
-      <%= link_to  '戻る', '#' %>
+    <div class='flex space-x-2 justify-center'>
+      <div class='link link-primary'>
+        <%= link_to  '新規登録', new_user_path %>
+      </div>
+      <div class='link link-primary'>
+        <%= link_to  '戻る', root_path %>
+      </div>
     </div>
   </div>
 </div>

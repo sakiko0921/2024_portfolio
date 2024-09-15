@@ -1,5 +1,7 @@
 <h1 class="text-3xl font-bold text-left ml-20 my-10">お買い物リスト一覧</h1>
-
+<button class="btn btn-active btn-primary ml-16 my-5">
+  <%= link_to "作成開始", new_member_info_path %>
+</button>
 <% if @shopping_lists.present? %>
 <!-- CARD for shopping list 1 -->
 <div class="mx-10">
@@ -8,7 +10,7 @@
       <div class="card bg-base-200 w-96 shadow-xl">
         <%= link_to shopping_list_path(shopping_list) do %>
           <div class="card-body">
-            <h2 class="card-title"><%= shopping_list.created_at %></h2>
+            <h2 class="card-title"><%= l shopping_list.created_at %></h2>
             <h3>買いだめ日数：<%= shopping_list.stocking_days %>日</h3>
           </div>
         <% end %>

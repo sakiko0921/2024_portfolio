@@ -10,7 +10,7 @@ class FoodItemsController < ApplicationController
 
   def create
     @shopping_list = current_user.shopping_lists.find(params[:food_item][:shopping_list_id])
-    food_item_ids = params[:food_item_ids]
+    food_item_ids = params[:food_item_ids] || []
 
     food_item_ids.each do |id|
       food_item = FoodItem.new(food_id: id, shopping_list_id: @shopping_list.id)
