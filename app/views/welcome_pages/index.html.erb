@@ -1,0 +1,14 @@
+<div class="flex w-full min-h-screen justify-center my-1.5">
+  <div class="w-full relative">
+    <%= image_tag "top.png" %>
+    <div class="flex justify-center my-10 absolute bottom-52 left-40">
+      <button class="btn btn-outline btn-neutral btn-lg">
+        <%= link_to "新規登録", new_user_path %>
+      </button>
+      <div class="divider divider-horizontal">OR</div>
+      <button class="btn btn-outline btn-neutral btn-lg">
+        <%= link_to "ログイン", login_path %>
+      </button>
+    </div>
+  </div>
+</div>
