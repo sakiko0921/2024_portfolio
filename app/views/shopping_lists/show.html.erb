@@ -1,4 +1,4 @@
-<h1 class="text-3xl font-bold text-left ml-20 my-10"><%= @shopping_list.created_at %>(日付)お買い物リスト</h1>
+<h1 class="text-3xl font-bold text-left ml-20 my-10"><%= l @shopping_list.created_at %> お買い物リスト</h1>
 <!-- PFCの量を表示するためのコード -->
   <!-- TABLE for shopping list -->
 <div class="overflow-x-auto mx-5">
@@ -10,8 +10,6 @@
         <th>食品名</th>
         <th>数量/重量</th>
         <th>単位</th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -34,10 +32,6 @@
         </td>
         <td><%= food_item.quantity %></td>
         <td><%= food_item.unit %></td>
-        <td><%= food_item.created_at %></td>
-        <td>
-        <th>
-        </th>
       </tr>
       <% end %>
       <% @daily_necessity_items.each do |daily_necessity_item| %>
@@ -58,10 +52,6 @@
           </td>
           <td><%= daily_necessity_item.quantity %></td>
           <td><%= daily_necessity_item.unit %></td>
-          <td><%= daily_necessity_item.created_at %></td>
-          <td>
-          <th>
-          </th>
         </tr>
         <% end %>
     </tbody>

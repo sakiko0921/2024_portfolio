@@ -7,11 +7,8 @@ class DailyNecessityItemsController < ApplicationController
   end
 
   def create
-    puts "DEBUG: params = #{params.inspect}"
-    puts params.inspect
-
     @shopping_list = current_user.shopping_lists.find(params[:daily_necessity_item][:shopping_list_id])
-    daily_necessity_item_ids = params[:daily_necessity_item_ids]
+    daily_necessity_item_ids = params[:daily_necessity_item_ids] || []
 
     daily_necessity_item_ids.each do |id|
       daily_necessity_item = DailyNecessityItem.new(daily_necessity_id: id, shopping_list_id: @shopping_list.id)

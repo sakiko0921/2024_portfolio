@@ -4,4 +4,6 @@ class ShoppingList < ApplicationRecord
   has_many :foods, through: :food_items
   has_many :daily_necessity_items, dependent: :destroy
   has_many :daily_necessities, through: :daily_necessity_items
+
+  validates :stocking_days, presence: true
 end

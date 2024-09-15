@@ -4,3 +4,6 @@ ja:
       gender:
         man: 男性
         woman: 女性
+  time:
+    formats:
+      default: "%Y/%m/%d"
