@@ -39,7 +39,7 @@ gem "bootsnap", require: false
 # 認証機能
 gem "sorcery"
 
-# 日本語化
+# 国際化対応
 gem "rails-i18n"
 
 group :development, :test do
