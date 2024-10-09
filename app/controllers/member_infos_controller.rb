@@ -8,10 +8,10 @@ class MemberInfosController < ApplicationController
   def create
     @member_info = current_user.member_infos.build(member_info_params)
     if @member_info.save
-      redirect_to new_member_info_path, success: "会員登録が完了しました"
+      redirect_to new_member_info_path, success: "メンバー登録が完了しました"
     else
       @member_infos = current_user.member_infos.includes(:user).order(created_at: :desc)
-      flash.now[:danger] = "会員登録に失敗しました"
+      flash.now[:danger] = "メンバー登録に失敗しました"
       render :new
     end
   end
